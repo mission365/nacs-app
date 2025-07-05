@@ -154,7 +154,7 @@
                     </div>
 
                     <!-- Password Validation -->
-                    <div id="password-validation" class="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hidden animate-fade-in">
+                    <!-- <div id="password-validation" class="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hidden animate-fade-in">
                         <p class="text-slate-300 text-sm font-medium mb-3">Password Requirements:</p>
                         <div class="grid grid-cols-1 gap-2 text-sm">
                             <div id="req-lowercase" class="flex items-center space-x-2 text-slate-400 transition-all duration-300">
@@ -188,13 +188,13 @@
                                 <span>8-16 characters long</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Submit Button -->
                     <button
                         type="submit"
                         id="submit-btn"
-                        class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:opacity-50 shadow-lg hover:shadow-xl relative overflow-hidden group"
+                        class="cursor-pointer w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:opacity-50 shadow-lg hover:shadow-xl relative overflow-hidden group"
                         disabled
                     >
                         <div class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 animate-shimmer"></div>
@@ -267,53 +267,30 @@
         }
 
         function validatePassword(password) {
-            const validationDiv = document.getElementById("password-validation");
+            // Completely disable validation - just enable submit button if both fields have content
             const submitBtn = document.getElementById("submit-btn");
-
-            if (password.length > 0) {
-                validationDiv.classList.remove("hidden");
-            } else {
-                validationDiv.classList.add("hidden");
-                submitBtn.disabled = true;
-                return;
-            }
-
-            // Check requirements
-            passwordValidation.hasLowercase = /[a-z]/.test(password);
-            passwordValidation.hasUppercase = /[A-Z]/.test(password);
-            passwordValidation.hasNumber = /\d/.test(password);
-            passwordValidation.hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-            passwordValidation.hasValidLength = password.length >= 8 && password.length <= 16;
-
-            // Update UI
-            updateRequirement("req-lowercase", passwordValidation.hasLowercase);
-            updateRequirement("req-uppercase", passwordValidation.hasUppercase);
-            updateRequirement("req-number", passwordValidation.hasNumber);
-            updateRequirement("req-special", passwordValidation.hasSpecialChar);
-            updateRequirement("req-length", passwordValidation.hasValidLength);
-
-            // Enable/disable submit button
-            const allValid = Object.values(passwordValidation).every(Boolean);
             const username = document.getElementById("username").value.trim();
-            submitBtn.disabled = !(allValid && username);
+            
+            // Enable submit button if both username and password have any content
+            submitBtn.disabled = !(username && password.length > 0);
         }
 
-        function updateRequirement(elementId, isValid) {
-            const element = document.getElementById(elementId);
-            const icon = element.querySelector("svg");
+        // function updateRequirement(elementId, isValid) {
+        //     const element = document.getElementById(elementId);
+        //     const icon = element.querySelector("svg");
 
-            if (isValid) {
-                element.classList.remove("text-slate-400");
-                element.classList.add("text-green-400");
-                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>`;
-                icon.classList.add("animate-pulse");
-            } else {
-                element.classList.remove("text-green-400");
-                element.classList.add("text-slate-400");
-                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
-                icon.classList.remove("animate-pulse");
-            }
-        }
+        //     if (isValid) {
+        //         element.classList.remove("text-slate-400");
+        //         element.classList.add("text-green-400");
+        //         icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>`;
+        //         icon.classList.add("animate-pulse");
+        //     } else {
+        //         element.classList.remove("text-green-400");
+        //         element.classList.add("text-slate-400");
+        //         icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+        //         icon.classList.remove("animate-pulse");
+        //     }
+        // }
 
         function handleSubmit(event) {
             event.preventDefault();
@@ -331,7 +308,7 @@
             // Simulate API call
             setTimeout(() => {
                 showSuccessModal();
-            }, 2500);
+            }, 2000);
         }
 
         function showSuccessModal() {
@@ -340,7 +317,7 @@
 
             // Redirect after showing success
             setTimeout(() => {
-                window.location.href = "index.html";
+                window.location.href = "home.html";
             }, 2000);
         }
 
@@ -386,9 +363,8 @@
         document.getElementById("username").addEventListener("input", function() {
             const password = document.getElementById("password").value;
             const submitBtn = document.getElementById("submit-btn");
-            const allValid = Object.values(passwordValidation).every(Boolean);
             const username = this.value.trim();
-            submitBtn.disabled = !(allValid && username);
+            submitBtn.disabled = !(username && password.length > 0);
         });
 
         // Initialize on page load
