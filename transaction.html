@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NACS Group - Transaction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'slide-up': 'slide-up 1s ease-out',
+                        'bounce-in': 'bounce-in 0.6s ease-out',
+                        'shimmer': 'shimmer 2s infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        'fade-in': {
+                            'from': { opacity: '0', transform: 'translateY(-10px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'slide-up': {
+                            'from': { opacity: '0', transform: 'translateY(50px) scale(0.9)' },
+                            'to': { opacity: '1', transform: 'translateY(0) scale(1)' }
+                        },
+                        'bounce-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        'shimmer': {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-white relative overflow-x-hidden">
+    <!-- Header/Navbar (copied from new-entry.html) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+        <div class="flex h-16 items-center justify-between px-6">
+            <div class="flex items-center space-x-3">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 rounded-lg flex items-center justify-center shadow-lg">
+                    <span class="text-white font-bold text-lg">N</span>
+                </div>
+                <div>
+                    <h1
+                        class="text-xl font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x">
+                        NACS Group
+                    </h1>
+                    <p class="text-xs text-slate-500">Dashboard</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <!-- Navigation Items -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#"
+                        class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Transaction</a>
+                    <a href="#"
+                        class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Bill</a>
+                    <a href="#"
+                        class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Account</a>
+                    <a href="#"
+                        class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Report</a>
+                </nav>
+                <!-- Profile Section -->
+                <div class="relative">
+                    <button id="profile-btn"
+                        class="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold hover:scale-110 transition-transform duration-200 shadow-lg">
+                        JD
+                    </button>
+                    <!-- Profile Dropdown -->
+                    <div id="profile-dropdown"
+                        class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 animate-fade-in">
+                        <div class="px-4 py-3 border-b border-gray-100">
+                            <p class="text-sm font-medium text-gray-900">John Doe</p>
+                            <p class="text-xs text-gray-500">john@nacsgroup.com</p>
+                        </div>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">Profile</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">Settings</a>
+                        <div class="border-t border-gray-100 mt-2 pt-2">
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">Log
+                                out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full flex justify-center p-4 relative z-10 min-h-0">
+        <div class="w-full max-w-3xl bg-gray-50 border border-gray-200 rounded-2xl shadow-2xl animate-slide-up relative mt-8 mx-auto">
+            <!-- Card glow effect -->
+            <div class="absolute top-4 right-4 w-2 h-2 bg-white/30 rounded-full animate-bounce"></div>
+            <div class="absolute bottom-6 left-6 w-1.5 h-1.5 bg-white/20 rounded-full animate-ping"></div>
+            <div class="px-12 py-14">
+                <div class="flex items-center justify-between mb-10 gap-4">
+                    <button onclick="window.history.back()" class="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-orange-400 via-red-400 to-pink-500 text-white font-semibold rounded-lg shadow-lg hover:from-orange-500 hover:to-pink-600 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 animate-bounce-in">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        <span>Back</span>
+                    </button>
+                    <h1 class="text-3xl text-center font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 animate-gradient-x">New Attachment</h1>
+                </div>
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-800">Date</label>
+                            <input type="date" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-800">Transaction Type</label>
+                            <select class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400">
+                                <option value="">Select type</option>
+                                <option value="cost">Cost</option>
+                                <option value="deposite">Deposite</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-800">Transaction Sectors</label>
+                            <select class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400">
+                                <option value="">Select sector</option>
+                                <option>Office expenses</option>
+                                <option>Giving haulat</option>
+                                <option>Payment of haulat</option>
+                                <option>Deposit to bank account</option>
+                                <option>Rent Payment</option>
+                                <option>Scal & Labour</option>
+                                <option>Port/Depot Expense</option>
+                                <option>Other expenses</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-800">Office Spending Sector</label>
+                            <select class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400">
+                                <option value="">Select office sector</option>
+                                <option>Providing staff</option>
+                                <option>Office Munitions</option>
+                                <option>Fooding and Donation</option>
+                                <option>Other office expenses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-800">Cash/Check</label>
+                            <select class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400">
+                                <option value="">Select method</option>
+                                <option>Cash</option>
+                                <option>Cash-Cheque</option>
+                                <option>ACP Cheque</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-800">Quantity</label>
+                            <input type="number" value="0" min="0" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                        </div>
+                    </div>
+                    <div class="space-y-2 animate-slide-up">
+                        <label class="block text-sm font-semibold text-gray-800">Comments</label>
+                        <textarea placeholder="Additional comments..." rows="3" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 resize-none"></textarea>
+                    </div>
+                    <div class="flex flex-col gap-4 pt-6 animate-bounce-in">
+                        <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Profile dropdown toggle (matches home.html)
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileBtn = document.getElementById('profile-btn');
+            const profileDropdown = document.getElementById('profile-dropdown');
+            if (profileBtn && profileDropdown) {
+                profileBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('hidden');
+                });
+                document.addEventListener('click', function (e) {
+                    if (!profileDropdown.classList.contains('hidden')) {
+                        profileDropdown.classList.add('hidden');
+                    }
+                });
+                profileDropdown.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html> 
