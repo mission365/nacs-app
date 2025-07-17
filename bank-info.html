@@ -60,13 +60,6 @@
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <!-- Navigation Items -->
-                <nav class="hidden md:flex items-center gap-6">
-                    <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Transaction</a>
-                    <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Bill</a>
-                    <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Account</a>
-                    <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Report</a>
-                </nav>
                 <!-- Profile Section -->
                 <div class="relative">
                     <button id="profile-btn" class="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold hover:scale-110 transition-transform duration-200 shadow-lg">JD</button>
@@ -88,7 +81,7 @@
     </header>
     <!-- Main Content -->
     <main class="w-full flex justify-center p-4 relative z-10 min-h-0">
-        <div class="w-full max-w-2xl bg-gray-50 border border-gray-200 rounded-2xl shadow-2xl animate-slide-up relative mt-8 mx-auto">
+        <div class="w-full max-w-7xl bg-gray-50 border border-gray-200 rounded-2xl shadow-2xl animate-slide-up relative mt-8 mx-auto">
             <!-- Card glow effect -->
             <div class="absolute top-4 right-4 w-2 h-2 bg-white/30 rounded-full animate-bounce"></div>
             <div class="absolute bottom-6 left-6 w-1.5 h-1.5 bg-white/20 rounded-full animate-ping"></div>
@@ -100,33 +93,33 @@
                         </svg>
                         <span>Back</span>
                     </a>
-                    <h1 class="text-3xl text-center font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 animate-gradient-x">New Bank Attachment</h1>
+                    <h1 class="text-4xl text-center font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 animate-gradient-x">New Bank Attachment</h1>
                 </div>
                 <form class="space-y-8" onsubmit="handleBankInfoSubmit(event)">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 animate-slide-up">
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Bank</label>
-                            <input type="text" name="bank" required class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                            <input type="text" name="bank" required placeholder="Enter bank name" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Branch</label>
-                            <input type="text" name="branch" required class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                            <input type="text" name="branch" required placeholder="Enter branch name" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Account Name</label>
-                            <input type="text" name="accountName" required class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                            <input type="text" name="accountName" required placeholder="Enter account name" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Account No</label>
-                            <input type="text" name="accountNo" required class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                            <input type="text" name="accountNo" required placeholder="Enter account number" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Bank Deposit</label>
-                            <input type="number" name="bankDeposit" required class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                            <input type="number" name="bankDeposit" required placeholder="Enter deposit amount" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Latest Transactions</label>
-                            <input type="date" name="latestTransactions" required class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
+                            <input type="date" name="latestTransactions" required placeholder="Select date" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
                         </div>
                     </div>
                     <div class="grid grid-cols-1 gap-4 animate-slide-up">
@@ -136,12 +129,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4 pt-6 animate-bounce-in">
-                        <button type="submit" class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-slate-800">
-                            Attachment
+                        <button type="submit" class="flex-1 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+                            Save
                         </button>
-                        <a href="bank-management.html" class="flex-1 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800 flex items-center justify-center">
-                            Back to List
-                        </a>
                     </div>
                 </form>
             </div>
