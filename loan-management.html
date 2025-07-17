@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Management - NACS Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'slide-up': 'slide-up 1s ease-out',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'slide-up': {
+                            'from': { opacity: '0', transform: 'translateY(50px) scale(0.9)' },
+                            'to': { opacity: '1', transform: 'translateY(0) scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-white relative overflow-x-hidden">
+    <!-- Header/Navbar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+        <div class="flex h-16 items-center justify-between px-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 rounded-lg flex items-center justify-center shadow-lg">
+                    <span class="text-white font-bold text-lg">N</span>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x">
+                        NACS Group
+                    </h1>
+                    <p class="text-xs text-slate-500">Loan Management</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="w-full flex justify-center p-4 relative z-10 min-h-0">
+        <div class="w-full max-w-4xl bg-gray-50 border border-gray-200 rounded-2xl shadow-2xl animate-slide-up relative mt-8 mx-auto">
+            <div class="px-10 py-12">
+                <div class="flex items-center justify-between mb-10 gap-4">
+                    <button onclick="window.history.back()" class="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-orange-400 via-red-400 to-pink-500 text-white font-semibold rounded-lg shadow-lg hover:from-orange-500 hover:to-pink-600 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 animate-bounce-in">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        <span>Back</span>
+                    </button>
+                    <h1 class="text-4xl text-center font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 animate-gradient-x cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">New Attachment</h1>
+                </div>
+                <!-- Tabs -->
+                <div class="flex space-x-4 mb-8">
+                    <button id="tab-owes" class="tab-btn px-6 py-2 rounded-t-lg font-semibold text-gray-700 bg-white border-b-2 border-orange-500 focus:outline-none" onclick="showTab('owes')">Howlat owes</button>
+                    <button id="tab-dena" class="tab-btn px-6 py-2 rounded-t-lg font-semibold text-gray-700 bg-gray-100 border-b-2 border-transparent focus:outline-none" onclick="showTab('dena')">Howlat dena</button>
+                    <button id="tab-arrears" class="tab-btn px-6 py-2 rounded-t-lg font-semibold text-gray-700 bg-gray-100 border-b-2 border-transparent focus:outline-none" onclick="showTab('arrears')">Arrears</button>
+                </div>
+                <!-- Tab Contents -->
+                <div class="overflow-x-auto mt-2">
+                    <div id="tab-content-owes">
+                        <table class="min-w-full bg-white rounded-lg border border-gray-200 shadow-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Amount</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check Submission</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Attachment</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">Mozammel Hoque (Nacs)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">1412500.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">9/13/2023</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">benaresi Fabrics</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">3177400.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">4/7/2022</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">Office Cash(Shiblu)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">242250.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">11/6/2021</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">ABDUR RAHMAN</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">20000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">2/8/2023</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">HARUN BI (BROKER)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">50000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">8/24/2023</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">BASIC BANK-MIRAJ HOSSAIN ANONDO-</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">550000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 bg-red-100">Have</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">10/29/2024</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">MD. SAIFUL</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">1328230.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">7/10/2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">SBAC-DPS= ABDUL HOQUE</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">3151328.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">7/10/2025</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="tab-content-dena" class="hidden">
+                        <table class="min-w-full bg-white rounded-lg border border-gray-200 shadow-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Amount</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check Submission</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Attachment</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">Kiron</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">2000000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">11/12/2024</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">M/S ALIF ELECTRONICS, CTG</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">89000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">4/23/2024</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">MALAYSIA-KAMRUL-BONDHU</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">538000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">5/27/2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">MTBL-CARD-LOAN</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">315000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 bg-red-100">Have</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">7/10/2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">SBAC CC LOAN-KHATUNGANJ BR.</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">2700001.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">5/14/2025</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="tab-content-arrears" class="hidden">
+                        <table class="min-w-full bg-white rounded-lg border border-gray-200 shadow-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Amount</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check Submission</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Latest Attachment</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">BNO MOBILE</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">500.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">3/1/2024</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">Part Pump</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">521678.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 bg-red-100">Have</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">7/17/2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">KOTA PUMP- BRS</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">20000.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">7/16/2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">JAMAL AUTO TYRES LTD</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">330400.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">6/16/2025</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-700 cursor-pointer hover:underline" onclick="window.location.href='loan-info.html'">JAMAN PARTS SHOP</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">46080.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">No</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">7/7/2025</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <script>
+                    function showTab(tab) {
+                        // Hide all tab contents
+                        document.getElementById('tab-content-owes').classList.add('hidden');
+                        document.getElementById('tab-content-dena').classList.add('hidden');
+                        document.getElementById('tab-content-arrears').classList.add('hidden');
+                        // Remove active style from all tab buttons
+                        document.getElementById('tab-owes').classList.remove('bg-white', 'border-orange-500');
+                        document.getElementById('tab-owes').classList.add('bg-gray-100', 'border-transparent');
+                        document.getElementById('tab-dena').classList.remove('bg-white', 'border-orange-500');
+                        document.getElementById('tab-dena').classList.add('bg-gray-100', 'border-transparent');
+                        document.getElementById('tab-arrears').classList.remove('bg-white', 'border-orange-500');
+                        document.getElementById('tab-arrears').classList.add('bg-gray-100', 'border-transparent');
+                        // Show selected tab content and style
+                        document.getElementById('tab-content-' + tab).classList.remove('hidden');
+                        document.getElementById('tab-' + tab).classList.add('bg-white', 'border-orange-500');
+                        document.getElementById('tab-' + tab).classList.remove('bg-gray-100', 'border-transparent');
+                    }
+                    // Default tab
+                    showTab('owes');
+                </script>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
