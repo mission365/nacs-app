@@ -117,11 +117,11 @@
 
     <!-- Main Content -->
     <main class="w-full flex justify-center p-4 relative z-10 min-h-0">
-        <div class="w-full max-w-3xl bg-gray-50 border border-gray-200 rounded-2xl shadow-2xl animate-slide-up relative mt-8 mx-auto">
+        <div class="w-full max-w-7xl bg-gray-50 border border-gray-200 rounded-2xl shadow-2xl animate-slide-up relative mt-8 mx-auto">
             <!-- Card glow effect -->
             <div class="absolute top-4 right-4 w-2 h-2 bg-white/30 rounded-full animate-bounce"></div>
             <div class="absolute bottom-6 left-6 w-1.5 h-1.5 bg-white/20 rounded-full animate-ping"></div>
-            <div class="px-12 py-14">
+            <div class="px-10 py-12">
                 <div class="flex items-center justify-between mb-10 gap-4">
                     <button onclick="window.history.back()" class="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-orange-400 via-red-400 to-pink-500 text-white font-semibold rounded-lg shadow-lg hover:from-orange-500 hover:to-pink-600 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 animate-bounce-in">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,10 +129,10 @@
                         </svg>
                         <span>Back</span>
                     </button>
-                    <h1 class="text-3xl text-center font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 animate-gradient-x">New Attachment</h1>
+                    <h1 class="text-4xl text-center font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 animate-gradient-x">New Transaction</h1>
                 </div>
                 <form class="space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-slide-up">
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Date</label>
                             <input type="date" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 placeholder-gray-400">
@@ -145,8 +145,6 @@
                                 <option value="deposite">Deposite</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up">
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-800">Transaction Sectors</label>
                             <select class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400">
@@ -191,8 +189,8 @@
                         <label class="block text-sm font-semibold text-gray-800">Comments</label>
                         <textarea placeholder="Additional comments..." rows="3" class="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 hover:border-orange-400 resize-none"></textarea>
                     </div>
-                    <div class="flex flex-col gap-4 pt-6 animate-bounce-in">
-                        <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6 animate-bounce-in">
+                        <button type="submit" class="flex-1 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-800">
                             Save
                         </button>
                     </div>
