@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bank Management - NACS Group</title>
+    <title>Delivery Report - NACS Group</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -11,14 +11,7 @@
           extend: {
             animation: {
               "gradient-x": "gradient-x 3s ease infinite",
-              float: "float 6s ease-in-out infinite",
-              "bounce-slow": "bounce 3s infinite",
-              "fade-in": "fade-in 0.5s ease-out",
               "slide-up": "slide-up 1s ease-out",
-              "bounce-in": "bounce-in 0.6s ease-out",
-              shimmer: "shimmer 2s infinite",
-              "slide-in-left": "slide-in-left 1s ease-out",
-              "slide-in-right": "slide-in-right 1s ease-out",
             },
             keyframes: {
               "gradient-x": {
@@ -31,38 +24,12 @@
                   "background-position": "right center",
                 },
               },
-              float: {
-                "0%, 100%": { transform: "translateY(0px)" },
-                "50%": { transform: "translateY(-20px)" },
-              },
-              "fade-in": {
-                from: { opacity: "0", transform: "translateY(-10px)" },
-                to: { opacity: "1", transform: "translateY(0)" },
-              },
               "slide-up": {
                 from: {
                   opacity: "0",
                   transform: "translateY(50px) scale(0.9)",
                 },
                 to: { opacity: "1", transform: "translateY(0) scale(1)" },
-              },
-              "bounce-in": {
-                "0%": { opacity: "0", transform: "scale(0.3)" },
-                "50%": { opacity: "1", transform: "scale(1.05)" },
-                "70%": { transform: "scale(0.9)" },
-                "100%": { opacity: "1", transform: "scale(1)" },
-              },
-              shimmer: {
-                "0%": { transform: "translateX(-100%)" },
-                "100%": { transform: "translateX(100%)" },
-              },
-              "slide-in-left": {
-                from: { opacity: "0", transform: "translateX(-100px)" },
-                to: { opacity: "1", transform: "translateX(0)" },
-              },
-              "slide-in-right": {
-                from: { opacity: "0", transform: "translateX(100px)" },
-                to: { opacity: "1", transform: "translateX(0)" },
               },
             },
           },
@@ -81,12 +48,11 @@
       }
     </style>
   </head>
-
   <body
     class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden"
   >
     <!-- Animated Background Elements -->
-    <div class="absolute inset-0">
+    <div class="absolute inset-0 pointer-events-none select-none">
       <div
         class="absolute top-20 left-20 w-72 h-72 bg-orange-500/15 rounded-full blur-3xl animate-pulse"
       ></div>
@@ -100,7 +66,6 @@
         class="absolute top-1/4 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl animate-bounce"
       ></div>
     </div>
-
     <div class="relative z-10 min-h-screen flex">
       <!-- Sidebar -->
       <div
@@ -212,9 +177,6 @@
                 ></path>
               </svg>
               <span class="font-medium">Accounts</span>
-              <div
-                class="absolute right-2 w-2 h-2 bg-orange-500 rounded-full"
-              ></div>
             </a>
 
             <a
@@ -236,6 +198,9 @@
                 ></path>
               </svg>
               <span class="font-medium">Reports</span>
+              <div
+                class="absolute right-2 w-2 h-2 bg-orange-500 rounded-full"
+              ></div>
             </a>
 
             <!-- <a href="#"
@@ -302,12 +267,12 @@
             <!-- Navigation Items -->
             <nav class="hidden md:flex items-center gap-6">
               <a
-                href="transaction.html"
+                href="#"
                 class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform"
                 >Transaction</a
               >
               <a
-                href="bill.html"
+                href="#"
                 class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform"
                 >Bill</a
               >
@@ -362,45 +327,127 @@
             </div>
           </div>
         </header>
-
         <!-- Main Content -->
         <main class="flex-1 w-full max-w-7xl mx-auto p-6 space-y-6">
           <!-- Page Header -->
           <div class="animate-fade-in-up">
             <h2 class="text-2xl font-bold text-gray-900 mb-2">
-              Bank Management
+              Delivery Report
             </h2>
-            <p class="text-gray-600">
-              Manage your bank accounts and transactions
-            </p>
+            <p class="text-gray-600">Summary of delivery details and records</p>
           </div>
-
-          <!-- Action Buttons -->
+          <!-- Action Row: Party Name and Print -->
           <div
-            class="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
+            class="flex flex-wrap items-center justify-between gap-4 animate-fade-in-up mb-4"
             style="animation-delay: 0.1s"
           >
-            <button
-              onclick="window.location.href='add-bank.html'"
-              class="flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl group"
-            >
-              <svg
-                class="w-4 h-4 mr-2 group-hover:rotate-90 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div class="flex flex-wrap items-center gap-4">
+              <label class="text-gray-700 font-medium">Party Name:</label>
+              <select
+                id="party"
+                name="party"
+                class="px-3 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300 min-w-[220px]"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                ></path>
-              </svg>
-              Add New Bank ACC
-            </button>
+                <option value="">Select a party</option>
+                <option>Best Electronics Ltd.</option>
+                <option>Butterfly Marketing Ltd.</option>
+                <option>Butterfly Manufacturing Company Ltd.</option>
+                <option>Butterfly Industries Ltd.</option>
+                <option>abc</option>
+                <option>KAZI FARMS</option>
+                <option>Atashi Fashion Ltd.</option>
+                <option>Mahadeen Sweater Ltd.</option>
+                <option>KAZI GRAND PARENTS LIMITED</option>
+                <option>KAZI FEED MILLL LIMITED</option>
+                <option>Sagorika Poultry Feed</option>
+                <option>Zaman Manufacturing Company Ltd.</option>
+                <option>Apex Textile Printing Mills Ltd.</option>
+                <option>Apex Holding Ltd.</option>
+                <option>Apex Fashion Wear Ltd.</option>
+                <option>Apex Lingerie Ltd.</option>
+                <option>Khatun Plastic Ltd.</option>
+                <option>Hanif Bhi C&F</option>
+                <option>APEX SPRING MILL LIMITED</option>
+                <option>Apex Spinning & Knitting Mills LTD</option>
+                <option>Marzia Stand company Ltd</option>
+                <option>Butterfly BRF</option>
+                <option>Intimate Attire Ltd.</option>
+                <option>Al Ammar Enterprise</option>
+                <option>Kazi Foods Kashimpur</option>
+                <option>Kazi Kazoldhing Farmers</option>
+                <option>Nandingram Kazi Poulty Ltd</option>
+                <option>Haier Bangladesh Limited</option>
+                <option>ACI Motors Limited</option>
+                <option>Premiaflex Plastics Limited</option>
+                <option>ACI Formulations Limited</option>
+                <option>Advance Chemical Industry Ltd</option>
+                <option>Zaman Fashion Wears Ltd.</option>
+                <option>ACI Salt Limited</option>
+                <option>abc</option>
+                <option>Apex Yarn Dyeing Limited</option>
+                <option>Matex Bangladesh Ltd.</option>
+                <option>Famous Printing & Packaging Ltd</option>
+                <option>ABC</option>
+                <option>POWER WORD CORPORATION LTD</option>
+                <option>TS Sweater Limited</option>
+                <option>wental contacson</option>
+                <option>Apex Convenience Foods Ltd</option>
+                <option>S.K ENTERPRISE</option>
+                <option>KHAN MEDIA BD.LTD</option>
+                <option>SINBA FASHION LTD</option>
+                <option>KAZI FOOD INDUSTRIES LTD</option>
+                <option>Cosmopolitan Industries (Pvt) Ltd</option>
+                <option>REDMIN INDUSTRIES LTD</option>
+                <option>BRAC CORN SEED FARM LTD</option>
+                <option>BRAC SEED PROCESSING CENTRE</option>
+                <option>BRAC PRINTING PACK LTD</option>
+                <option>BRAC HI-BREED MAIXI SEED FARM LTD</option>
+                <option>BRAC READING GLASS LAMP LTD</option>
+                <option>BRAC SEED AND AGRO ENTERPRISE</option>
+                <option>BRAC DAIRY AND FOOD PROJECT</option>
+                <option>BRAC</option>
+                <option>KAZI FARMS LTD</option>
+                <option>TS Casual Wear Limited.</option>
+              </select>
+            </div>
+            <div>
+              <button
+                onclick="window.print()"
+                class="ml-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl group flex items-center"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 9V4h12v5"
+                  />
+                  <rect
+                    x="6"
+                    y="13"
+                    width="12"
+                    height="7"
+                    rx="2"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 17h0"
+                  />
+                </svg>
+                Print
+              </button>
+            </div>
           </div>
-
           <!-- Table Container -->
           <div
             class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in-up"
@@ -408,267 +455,783 @@
           >
             <!-- Table Header -->
             <div class="bg-gray-50/50 border-b border-gray-200 px-6 py-4">
-              <h3 class="text-lg font-semibold text-gray-900">Bank Accounts</h3>
-              <p class="text-sm text-gray-600">4 accounts found</p>
+              <h3 class="text-lg font-semibold text-gray-900">
+                Delivery Records
+              </h3>
+              <p class="text-sm text-gray-600">Summary of delivery details</p>
             </div>
-
-            <!-- Table -->
-            <div class="overflow-x-auto">
+            <!-- Table: Vertically scrollable, hide scrollbar -->
+            <div class="overflow-y-auto max-h-[420px] scrollbar-hide">
               <table class="w-full">
                 <thead class="bg-gray-50/50">
                   <tr>
                     <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                     >
-                      Bank Name
+                      Date
                     </th>
                     <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                     >
-                      Branch
+                      Count
                     </th>
                     <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                     >
-                      Account Title
+                      Im&gt;EX&gt;LO&gt;LoEx
                     </th>
                     <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                     >
-                      Account No
+                      Due Count
                     </th>
                     <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                     >
-                      Balance
+                      Detention
                     </th>
                     <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                     >
-                      Last Trx
-                    </th>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Print
+                      Due Amount
                     </th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.1s"
-                  >
+                  <tr>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      State Bank of India
+                      21/7/2025
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      Chennai Central
+                      6
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      NACS Group Pvt Ltd
+                      5&gt;0&gt;1&gt;0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      1234567890
+                      6
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      ₹2,50,000
+                      0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      2024-01-15
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
-                        </svg>
-                      </button>
+                      25300
                     </td>
                   </tr>
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.2s"
-                  >
+                  <tr>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      HDFC Bank
+                      20/7/2025
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      Madurai Main
+                      16
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      NACS Transport Co
+                      12&gt;0&gt;4&gt;0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      9876543210
+                      16
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      ₹1,75,500
+                      0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      2024-01-14
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
-                        </svg>
-                      </button>
+                      24504
                     </td>
                   </tr>
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.3s"
-                  >
+                  <tr>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      ICICI Bank
+                      19/7/2025
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      Coimbatore
+                      6
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      NACS Logistics
+                      6&gt;0&gt;0&gt;0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      4567891230
+                      6
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      ₹3,20,750
+                      0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      2024-01-13
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
-                        </svg>
-                      </button>
+                      15000
                     </td>
                   </tr>
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.4s"
-                  >
+                  <tr>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      Axis Bank
+                      17/7/2025
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      Salem
+                      4
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      NACS Construction
+                      4&gt;0&gt;0&gt;0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      7891234560
+                      4
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      ₹95,250
+                      0
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
                     >
-                      2024-01-12
+                      13500
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
-                        </svg>
-                      </button>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      16/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3&gt;0&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      32200
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      14/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      2
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      2&gt;0&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      2
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      4000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      13/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5&gt;0&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      13600
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      12/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0&gt;1&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      18000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      10/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      6
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5&gt;1&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      35800
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      9/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0&gt;3&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      93000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      8/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      7
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5&gt;0&gt;0&gt;2
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      7
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      33000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      7/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      4
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0&gt;1&gt;0&gt;3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      4
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      49500
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      6/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      4
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      2&gt;0&gt;2&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      4
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      10502
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      4
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      2&gt;1&gt;0&gt;1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      -19500
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      4/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      2&gt;3&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      43000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      14
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      10&gt;4&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      13
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      103000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      2/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0&gt;0&gt;0&gt;1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5500
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      1/7/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      8
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      7&gt;0&gt;0&gt;1
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      6
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      22000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      30/6/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      9
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0&gt;2&gt;0&gt;7
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      6
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      100000
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      29/6/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      20
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      10&gt;3&gt;4&gt;3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      20
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      104904
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      28/6/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      12
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      5&gt;5&gt;0&gt;2
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      11
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      151500
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      26/6/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      22
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      11&gt;8&gt;0&gt;3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      18
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      94300
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      25/6/2025
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      3&gt;0&gt;0&gt;0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      0
                     </td>
                   </tr>
                 </tbody>
@@ -677,6 +1240,7 @@
           </div>
         </main>
       </div>
+
       <!-- Sidebar Overlay -->
       <div
         id="sidebar-overlay"

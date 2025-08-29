@@ -1,73 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bank Management - NACS Group</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Report - NACS Group</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            animation: {
-              "gradient-x": "gradient-x 3s ease infinite",
-              float: "float 6s ease-in-out infinite",
-              "bounce-slow": "bounce 3s infinite",
-              "fade-in": "fade-in 0.5s ease-out",
-              "slide-up": "slide-up 1s ease-out",
-              "bounce-in": "bounce-in 0.6s ease-out",
-              shimmer: "shimmer 2s infinite",
-              "slide-in-left": "slide-in-left 1s ease-out",
-              "slide-in-right": "slide-in-right 1s ease-out",
-            },
-            keyframes: {
-              "gradient-x": {
-                "0%, 100%": {
-                  "background-size": "200% 200%",
-                  "background-position": "left center",
-                },
-                "50%": {
-                  "background-size": "200% 200%",
-                  "background-position": "right center",
-                },
-              },
-              float: {
-                "0%, 100%": { transform: "translateY(0px)" },
-                "50%": { transform: "translateY(-20px)" },
-              },
-              "fade-in": {
-                from: { opacity: "0", transform: "translateY(-10px)" },
-                to: { opacity: "1", transform: "translateY(0)" },
-              },
-              "slide-up": {
-                from: {
-                  opacity: "0",
-                  transform: "translateY(50px) scale(0.9)",
-                },
-                to: { opacity: "1", transform: "translateY(0) scale(1)" },
-              },
-              "bounce-in": {
-                "0%": { opacity: "0", transform: "scale(0.3)" },
-                "50%": { opacity: "1", transform: "scale(1.05)" },
-                "70%": { transform: "scale(0.9)" },
-                "100%": { opacity: "1", transform: "scale(1)" },
-              },
-              shimmer: {
-                "0%": { transform: "translateX(-100%)" },
-                "100%": { transform: "translateX(100%)" },
-              },
-              "slide-in-left": {
-                from: { opacity: "0", transform: "translateX(-100px)" },
-                to: { opacity: "1", transform: "translateX(0)" },
-              },
-              "slide-in-right": {
-                from: { opacity: "0", transform: "translateX(100px)" },
-                to: { opacity: "1", transform: "translateX(0)" },
-              },
-            },
-          },
-        },
-      };
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'slide-up': 'slide-up 1s ease-out',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'slide-up': {
+                            'from': { opacity: '0', transform: 'translateY(50px) scale(0.9)' },
+                            'to': { opacity: '1', transform: 'translateY(0) scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
     </script>
     <style>
       /* Hide scrollbar for Chrome, Safari and Opera */
@@ -80,29 +44,17 @@
         scrollbar-width: none; /* Firefox */
       }
     </style>
-  </head>
-
-  <body
-    class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden"
-  >
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
     <!-- Animated Background Elements -->
-    <div class="absolute inset-0">
-      <div
-        class="absolute top-20 left-20 w-72 h-72 bg-orange-500/15 rounded-full blur-3xl animate-pulse"
-      ></div>
-      <div
-        class="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-pulse delay-1000"
-      ></div>
-      <div
-        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-2xl animate-ping"
-      ></div>
-      <div
-        class="absolute top-1/4 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl animate-bounce"
-      ></div>
+    <div class="absolute inset-0 pointer-events-none select-none">
+        <div class="absolute top-20 left-20 w-72 h-72 bg-orange-500/15 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-2xl animate-ping"></div>
+        <div class="absolute top-1/4 right-1/4 w-48 h-48 bg-cyan-500/10 rounded-full blur-2xl animate-bounce"></div>
     </div>
-
     <div class="relative z-10 min-h-screen flex">
-      <!-- Sidebar -->
+        <!-- Sidebar -->
       <div
         id="sidebar"
         class="w-64 bg-gradient-to-b from-slate-800 via-blue-900 to-slate-800 border-r border-white/10 shadow-lg transition-all duration-300 transform -translate-x-full lg:translate-x-0 fixed lg:relative z-40 h-screen flex flex-col justify-between"
@@ -212,9 +164,6 @@
                 ></path>
               </svg>
               <span class="font-medium">Accounts</span>
-              <div
-                class="absolute right-2 w-2 h-2 bg-orange-500 rounded-full"
-              ></div>
             </a>
 
             <a
@@ -236,6 +185,9 @@
                 ></path>
               </svg>
               <span class="font-medium">Reports</span>
+              <div
+                class="absolute right-2 w-2 h-2 bg-orange-500 rounded-full"
+              ></div>
             </a>
 
             <!-- <a href="#"
@@ -273,418 +225,223 @@
         </div>
       </div>
 
-      <!-- Main Content Area -->
-      <div class="flex-1 flex flex-col min-h-screen bg-gray-50">
-        <!-- Header/Navbar -->
-        <header
-          class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm"
-        >
-          <div class="flex h-16 items-center justify-end gap-4 px-6">
-            <!-- Mobile menu button -->
-            <button
-              id="mobile-menu-btn"
-              class="lg:hidden text-gray-600 hover:text-gray-900 transition-colors duration-200"
-            >
-              <svg
-                class="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
-            <!-- Navigation Items -->
-            <nav class="hidden md:flex items-center gap-6">
-              <a
-                href="transaction.html"
-                class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform"
-                >Transaction</a
-              >
-              <a
-                href="bill.html"
-                class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform"
-                >Bill</a
-              >
-              <a
-                href="#"
-                class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform"
-                >Account</a
-              >
-              <a
-                href="#"
-                class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform"
-                >Report</a
-              >
-            </nav>
-            <!-- Profile Section -->
-            <div class="flex items-center gap-4">
-              <div class="relative">
-                <button
-                  id="profile-btn"
-                  class="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold hover:scale-110 transition-transform duration-200 shadow-lg"
-                >
-                  JD
-                </button>
-                <!-- Profile Dropdown -->
-                <div
-                  id="profile-dropdown"
-                  class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 animate-fade-in"
-                >
-                  <div class="px-4 py-3 border-b border-gray-100">
-                    <p class="text-sm font-medium text-gray-900">John Doe</p>
-                    <p class="text-xs text-gray-500">john@nacsgroup.com</p>
-                  </div>
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-                    >Profile</a
-                  >
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-                    >Settings</a
-                  >
-                  <div class="border-t border-gray-100 mt-2 pt-2">
-                    <a
-                      href="#"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-                      >Log out</a
-                    >
-                  </div>
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col min-h-screen bg-gray-50">
+            <!-- Header/Navbar -->
+            <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+                <div class="flex h-16 items-center justify-end gap-4 px-6">
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <!-- Navigation Items -->
+                    <nav class="hidden md:flex items-center gap-6">
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Transaction</a>
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Bill</a>
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Account</a>
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 hover:scale-105 transform">Report</a>
+                    </nav>
+                    <!-- Profile Section -->
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <button id="profile-btn" class="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold hover:scale-110 transition-transform duration-200 shadow-lg">JD</button>
+                            <!-- Profile Dropdown -->
+                            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 animate-fade-in">
+                                <div class="px-4 py-3 border-b border-gray-100">
+                                    <p class="text-sm font-medium text-gray-900">John Doe</p>
+                                    <p class="text-xs text-gray-500">john@nacsgroup.com</p>
+                                </div>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">Profile</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">Settings</a>
+                                <div class="border-t border-gray-100 mt-2 pt-2">
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">Log out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="flex-1 w-full max-w-7xl mx-auto p-6 space-y-6">
-          <!-- Page Header -->
-          <div class="animate-fade-in-up">
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">
-              Bank Management
-            </h2>
-            <p class="text-gray-600">
-              Manage your bank accounts and transactions
-            </p>
-          </div>
-
-          <!-- Action Buttons -->
-          <div
-            class="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
-            style="animation-delay: 0.1s"
-          >
-            <button
-              onclick="window.location.href='add-bank.html'"
-              class="flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl group"
-            >
-              <svg
-                class="w-4 h-4 mr-2 group-hover:rotate-90 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                ></path>
-              </svg>
-              Add New Bank ACC
-            </button>
-          </div>
-
-          <!-- Table Container -->
-          <div
-            class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in-up"
-            style="animation-delay: 0.2s"
-          >
-            <!-- Table Header -->
-            <div class="bg-gray-50/50 border-b border-gray-200 px-6 py-4">
-              <h3 class="text-lg font-semibold text-gray-900">Bank Accounts</h3>
-              <p class="text-sm text-gray-600">4 accounts found</p>
-            </div>
-
-            <!-- Table -->
-            <div class="overflow-x-auto">
-              <table class="w-full">
-                <thead class="bg-gray-50/50">
-                  <tr>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Bank Name
-                    </th>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Branch
-                    </th>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Account Title
-                    </th>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Account No
-                    </th>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Balance
-                    </th>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Last Trx
-                    </th>
-                    <th
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Print
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.1s"
-                  >
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      State Bank of India
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      Chennai Central
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      NACS Group Pvt Ltd
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      1234567890
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      ₹2,50,000
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      2024-01-15
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
+            </header>
+            <!-- Main Content -->
+            <main class="flex-1 w-full max-w-7xl mx-auto p-6 space-y-6">
+                <!-- Page Header -->
+                <div class="animate-fade-in-up">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Cash Report</h2>
+                    <p class="text-gray-600">Summary of cash transactions and records</p>
+                </div>
+                <!-- Action Row: Date/User/Search and Print -->
+                <div class="flex flex-wrap items-center justify-between gap-4 animate-fade-in-up mb-4" style="animation-delay: 0.1s;">
+                    <form class="flex flex-wrap items-center gap-2">
+                        <label class="text-gray-700 font-medium">Month:</label>
+                        <input type="date" class="border border-gray-300 rounded px-3 py-2" />
+                        <select class="border border-gray-300 rounded px-3 py-2 min-w-[180px]">
+                            <option>Select User</option>
+                            <option>Abdul Haq</option>
+                            <option>Shiblu</option>
+                            <option>Mozammel</option>
+                            <option>Emon</option>
+                            <option>AbdulHaq DK</option>
+                            <option>Parvez</option>
+                            <option>Nashir</option>
+                        </select>
+                    </form>
+                    <button onclick="window.print()"
+                        class="ml-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl group flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9V4h12v5" />
+                            <rect x="6" y="13" width="12" height="7" rx="2" stroke-width="2" stroke="currentColor" fill="none" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 17h0" />
                         </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.2s"
-                  >
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      HDFC Bank
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      Madurai Main
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      NACS Transport Co
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      9876543210
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      ₹1,75,500
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      2024-01-14
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.3s"
-                  >
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      ICICI Bank
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      Coimbatore
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      NACS Logistics
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      4567891230
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      ₹3,20,750
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      2024-01-13
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr
-                    class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up"
-                    style="animation-delay: 0.4s"
-                  >
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      Axis Bank
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      Salem
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      NACS Construction
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      7891234560
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      ₹95,250
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                    >
-                      2024-01-12
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        class="text-blue-600 hover:text-blue-800 transition-colors duration-300 hover:scale-110 transform"
-                      >
-                        <svg
-                          class="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                          ></path>
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </main>
-      </div>
-      <!-- Sidebar Overlay -->
+                        Print
+                    </button>
+                </div>
+                <!-- Table Container -->
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <!-- Table Header -->
+                    <div class="bg-gray-50/50 border-b border-gray-200 px-6 py-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Cash Records</h3>
+                        <p class="text-sm text-gray-600">Summary of cash transactions</p>
+                    </div>
+                    <!-- Table: Vertically scrollable, hide scrollbar -->
+                    <div class="overflow-y-auto max-h-[420px] scrollbar-hide">
+                        <table class="w-full">
+                            <thead class="bg-gray-50/50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Transduction Coz</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Cash In</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Cash Out</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Trx count</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.1s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">গাড়ির সাটার বেতন</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">41000</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">11</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">মশিন পরিবর্তন</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">26200</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">7</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.3s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">গাড়ির হতে কোম্পানিতে জমা</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">326500</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.4s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">গাড়ির অন্যান্য খরচ</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">255050</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">65</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.5s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">ট্রিপ বকেয়া</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1240100</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">87</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.6s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">কোম্পানি হতে প্রাপ্ত</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">690902</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">20</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.7s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Advance Collected By Logistic</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1776800</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">94</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.8s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">হ্যান্ডসেট গ্রুপ</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1500000</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.9s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">ট্রিপ হিসাব</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2631600</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">152</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.0s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">হ্যান্ডসেট দেওয়া</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2754116</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">6</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.1s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">ব্যাংক একাউন্টে জমা</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">323195</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">4</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.2s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">গাড়ির বকেয়া প্রদান</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">789000</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">118</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.3s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">গাড়িটিকে হ্যান্ডসেট পরিষোধ</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">70000</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.4s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">অন্যান্য খরচ</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">740732</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">40</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.5s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">প্যাসিভ সেমাউন্ড</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">403452</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">118</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.6s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">ব্যাংক একাউন্ট</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1970700</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">21</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.7s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Oil Pump</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">374340</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">27</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-all duration-300 animate-fade-in-up" style="animation-delay: 1.8s;">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">ঢাকা পরিবর্তন</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">0</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">310000</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5</td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Sidebar Overlay -->
       <div
         id="sidebar-overlay"
         class="fixed inset-0 bg-black/50 z-30 lg:hidden hidden"
         onclick="toggleSidebar()"
       ></div>
+
+
     </div>
 
+    
     <!-- Accounts Modal -->
     <div
       id="accounts-modal"
@@ -1117,5 +874,6 @@
         }
       });
     </script>
-  </body>
-</html>
+    
+</body>
+</html> 
